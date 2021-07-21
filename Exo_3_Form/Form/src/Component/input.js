@@ -7,29 +7,58 @@ class Input extends React.Component {
 
         this.state = {
             isSubmit: false,
+            isValidEmail: false,
+            email: "",
+            password: "",
+            isValidPassword: false,
         };
     }
 
+    handleOnChangeEmail = (e) => {
+        this.setState({
+            email: e.target.value,
+        })
+        let patt = new RegExp(/^[a-zA-Z0-9.!#$%&'+=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)$/);
+        if (patt.test(this.state.email)) {
+            this.setState({
+                isValidEmail: true,
+            })
+        } else {
+            this.setState({
+                isValidEmail: false,
+            })
+        }
+    }
+
+    handleOnChangePassword = (e) => {
+        this.setState({
+            password: e.target.value,
+        })
+        if (this.state.password.length > 5) {
+            this.setState({
+                isValidPassword: true,
+            })
+        } else {
+            this.setState({
+                isValidPassword: false,
+            })
+        }
+    }
     onSubmitChange = () => {
         this.setState({
             isSubmit: true,
         })
     }
 
+    onValidChangePassword = () => {
+        this.setState({
+            isValidPassword: true,
+        })
+    }
+
     handleSubmit = (e) => {
         e.preventDefault();
     }
-
-    // onFocusChange = () => {
-    //     this.setState({
-    //         isFocused: true
-    //     });
-    // }
-    // onChangeChange = () => {
-    //     this.setState({
-    //         ischanged: true
-    //     })
-    // }
 
     render() {
         return (
@@ -48,15 +77,14 @@ class Input extends React.Component {
                         >Email address</label>
                         <input
                             type="email"
-                            className="form-control border-danger is-invalid"
+                            onChange={this.handleOnChangeEmail}
+                            className={(this.state.isValidEmail)
+                                ? "form-control is-valid"
+                                : "form-control is-invalid"
+                            }
                             id="inputEmail"
                             aria-describedby="emailHelp"
                             placeholder="Enter email..."
-                        // onFocus={this.onFocusChange}
-                        // style={(this.state.isFocused)
-                        //     ? { border: "3px solid red", outline: "3px solid red" }
-                        //     : { border: "1px lightgrey black" }
-                        // }
                         ></input>
                     </div>
                     <div className="mb-3">
@@ -67,7 +95,11 @@ class Input extends React.Component {
                         </label>
                         <input
                             type="password"
-                            className="form-control border-danger is-invalid"
+                            onChange={this.handleOnChangePassword}
+                            className={(this.state.isValidPassword)
+                                ? "form-control is-valid"
+                                : "form-control is-invalid"
+                            }
                             id="inputPassword"
                             placeholder="Enter password..."
                         ></input>
@@ -91,13 +123,13 @@ class Input extends React.Component {
                 </form>
                 <div
                     style={(this.state.isSubmit)
-                        ? { backgroundColor: "grey", height: "300px", width: "100%", display: "flex", justifyContent: "center", alignItems: "center", fontSize: "2rem", borderRadius: "5%" }
+                        ? { backgroundColor: "grey", height: "300px", width: "60%", display: "flex", justifyContent: "center", alignItems: "center", fontSize: "2rem", borderRadius: "5%" }
                         : { display: "none" }
                     }
                     {...console.log(this.state)}
                 >Form Submitted !
                 </div>
-            </div>
+            </div >
         )
     }
 }
