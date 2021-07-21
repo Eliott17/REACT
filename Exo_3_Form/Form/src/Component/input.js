@@ -16,6 +16,10 @@ class Input extends React.Component {
         })
     }
 
+    handleSubmit = (e) => {
+        e.preventDefault();
+    }
+
     // onFocusChange = () => {
     //     this.setState({
     //         isFocused: true
@@ -30,7 +34,13 @@ class Input extends React.Component {
     render() {
         return (
             <div>
-                <form className="container">
+                <form
+                    className="container"
+                    onSubmit={this.handleSubmit}
+                    style={(this.state.isSubmit)
+                        ? { display: "none" }
+                        : { display: "block" }
+                    }>
                     <div className="mb-3">
                         <label
                             for="inputEmail"
@@ -38,7 +48,7 @@ class Input extends React.Component {
                         >Email address</label>
                         <input
                             type="email"
-                            className="form-control border-danger"
+                            className="form-control border-danger is-invalid"
                             id="inputEmail"
                             aria-describedby="emailHelp"
                             placeholder="Enter email..."
@@ -57,7 +67,7 @@ class Input extends React.Component {
                         </label>
                         <input
                             type="password"
-                            className="form-control border-danger"
+                            className="form-control border-danger is-invalid"
                             id="inputPassword"
                             placeholder="Enter password..."
                         ></input>
@@ -75,16 +85,18 @@ class Input extends React.Component {
                     </div>
                     <button
                         type="submit"
-                        class="btn btn-primary"
-                        onSubmit={this.onSubmitChange}
+                        className="btn btn-primary"
+                        onClick={this.onSubmitChange}
                     >Submit</button>
                 </form>
                 <div
                     style={(this.state.isSubmit)
-                        ? { display: "block", backgroundColor: "grey" }
+                        ? { backgroundColor: "grey", height: "300px", width: "100%", display: "flex", justifyContent: "center", alignItems: "center", fontSize: "2rem", borderRadius: "5%" }
                         : { display: "none" }
                     }
-                >Form Submitted !</div>
+                    {...console.log(this.state)}
+                >Form Submitted !
+                </div>
             </div>
         )
     }
