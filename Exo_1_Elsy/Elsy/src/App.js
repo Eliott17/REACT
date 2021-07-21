@@ -10,6 +10,7 @@ const heartMin = 80;
 const heartMax = 180;
 const stepsMin = 0;
 const stepsMax = 50000;
+const minwater = 1.5;
 
 class App extends React.Component {
   constructor() {
@@ -24,43 +25,46 @@ class App extends React.Component {
   }
 
   onHeartChange = (e) => {
-    this.setState((prevState) => this.calculateWater({
-      ...prevState,
-      heart: e.target.value,
-    }))
-  }
+    this.setState((prevState) => {
 
-  onStepsChange = (e) => {
-    this.setState((prevState) => this.calculateWater({
-      ...prevState,
-      steps: e.target.value,
-    }))
-  }
+      return this.calculateWater({
+        ...prevState,
+        heart: e.target.value,
+      });
+    });
+  };
 
   onTempChange = (e) => {
-    this.setState((prevState) => this.calculateWater({
-      ...prevState,
-      temperature: e.target.value,
-    }))
-  }
+    this.setState((prevState) => {
 
-  calculateWater = (state) => {
-    if (this.state.temperature > 20) {
-      this.setState({
-        water: (state.temperature - 20) * (0.02 * state.water),
-      })
-    }
-    if (this.state.heart > 120) {
-      this.setState({
-        water: (state.heart - 120) * (0.0008 * state.water),
-      })
-    }
-    if (this.state.steps > 10000) {
-      this.setState({
-        water: (state.steps - 10000) * (0.00002 * state.water),
-      })
-    }
-  }
+      return this.calculateWater({
+        ...prevState,
+        temperature: e.target.value,
+      });
+    });
+  };
+
+  onStepsChange = (e) => {
+    this.setState((prevState) => {
+
+      return this.calculateWater({
+        ...prevState,
+        steps: e.target.value,
+      });
+    });
+  };
+
+  calculateWater = (newState) => {
+
+    const tempIncrement = 0.02 * newState.temperature;
+    const heartIncrement = 0.0008 * newState.heart;
+    const stepIncrement = 0.00002 * newState.steps;
+
+    return {
+      ...newState,
+      water: minwater + tempIncrement + heartIncrement + stepIncrement,
+    };
+  };
 
   render() {
     return (
