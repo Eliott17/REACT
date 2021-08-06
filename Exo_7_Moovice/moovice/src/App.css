@@ -1,0 +1,7 @@
+a {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+a:hover {
+  transform: scale(1.3);
+}

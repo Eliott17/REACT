@@ -1,0 +1,13 @@
+
+li {
+    margin-bottom: 0.5em;
+    margin-left: 0;
+    font-size: 1.5em;
+    list-style: none;
+    width: 13em;
+
+}
+
+li:hover {
+    color: red;
+}
