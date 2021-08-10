@@ -1,0 +1,25 @@
+.form-input {
+    /* background-color: red; */
+    width: 20%;
+    padding: 0.5em; 
+    /* border-radius: 5%; */
+    /* border:2px solid black; */
+}
+
+.input-div {
+    /* background-color: darkblue; */
+    /* width: fit-content; */
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.errors-div {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
