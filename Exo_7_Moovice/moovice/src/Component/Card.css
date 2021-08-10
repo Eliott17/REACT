@@ -1,0 +1,7 @@
+
+.main-card {
+    width: 20%;
+    height: fit-content;
+    margin: 2em;
+    border: 2px solid black;
+}

@@ -2,6 +2,10 @@ import React from "react";
 
 // CSS
 import "./component.css";
+import "./Popular.css";
+
+// Component
+import Card from "./Card.js";
 
 
 class Popular extends React.Component {
@@ -35,6 +39,10 @@ class Popular extends React.Component {
         return (
             <div>
                 <h1>Popular</h1>
+                <div className="main">
+                    {this.state.movies.map(movie =>
+                        <Card movie={movie} key={movie.id} />)}
+                </div>
             </div>
         )
     }
