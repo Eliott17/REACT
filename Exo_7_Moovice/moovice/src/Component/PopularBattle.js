@@ -37,9 +37,8 @@ class PopularBattle extends React.Component {
         console.log(this.state.movies[0])
 
         return (
-            <div>
-
-                {this.state.movies.slice(0, 2)(movie =>
+            <div className="main">
+                {this.state.movies.slice(0, 2).map(movie =>
                     <Card movie={movie} key={movie.id} />)}
             </div>
         )
