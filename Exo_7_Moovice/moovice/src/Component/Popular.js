@@ -34,11 +34,10 @@ class Popular extends React.Component {
     }
 
     render() {
-        console.log(this.state.movies)
+        // console.log(this.state.movies)
 
         return (
             <div>
-                <h1>Popular</h1>
                 <div className="main">
                     {this.state.movies.map(movie =>
                         <Card movie={movie} key={movie.id} />)}
