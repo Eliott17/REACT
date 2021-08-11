@@ -15,7 +15,7 @@
     
 }
 
-button {
+.poke-button {
     width: 40%;
     margin-bottom: 2em;
     padding: 1em;
@@ -59,7 +59,7 @@ img {
 
 .loader-image {
     border-radius : 50%;
-    animation: spin 2s linear infinite;
+    animation: spin 4s linear infinite;
 
 }
   
