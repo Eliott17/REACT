@@ -1,13 +1,16 @@
 import React from "react";
 
+// CSS
+import "./Counter.css"
+
 class Counter extends React.Component {
     render() {
         return (
-            <div style={{ display: "flex", justifyContent: "center" }}>
-                <div style={{ display: "flex", justifyContent: "space-evenly", width: "200px", alignItems: "center" }}>
-                    <button style={{ backgroundColor: "red", borderRadius: "50%", width: "50px", height: "50px" }} onClick={this.props.subtractFunction}>-</button>
-                    <h2 style={{ color: "purple", fontSize: "40px" }}>{this.props.count}</h2>
-                    <button style={{ backgroundColor: "green", borderRadius: "50%", width: "50px", height: "50px" }} onClick={this.props.addFunction}>+</button>
+            <div className="main-div">
+                <div className="count-div">
+                    <button className="add-button" onClick={this.props.subtractFunction}>-</button>
+                    <h2 className="count">{this.props.count}</h2>
+                    <button className="sub-button" onClick={this.props.addFunction}>+</button>
                 </div>
             </div>
         )
